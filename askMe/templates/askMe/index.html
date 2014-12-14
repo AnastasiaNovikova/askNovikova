@@ -1,0 +1,64 @@
+{% extends "askMe/base.html" %}
+{% block content %}
+                <!--Question Panel -->
+        {% for q in latestQuestions %}
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">{{ q.title }}</h3></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <img src="http://lorempixel.com/200/200/" alt="image from web"></a>
+                                <div class="caption" align="center">
+                                    <h4>{{ q.author }}</h4>
+                                    <div class="btn-group" role="group" aria-label="...">
+                                        <button type="button" class="btn btn-default">
+                                             <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-default disabled">
+                                          48
+                                        </button>
+                                        <button type="button" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="well well-lg">
+                                {{ q.content }}
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Answers <span class="badge">{{ q.answer_set.count }}</span>
+                                 </div>
+                                <div class="col-md-9">
+                                    Tags:{% for tag in q.tag_set.all %}{% if forloop.counter < 6 %} {{ tag }} {% endif %}{% endfor %}
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 ">
+                <nav>
+                    <ul class="pagination">
+                        <li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+{% endblock content%}
+
+
+
+
