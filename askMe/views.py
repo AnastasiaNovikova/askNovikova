@@ -18,3 +18,11 @@ def index(request):
     context['popularTags'] = tag_list
     context['bestMembers'] = author_list
     return render(request, 'askMe/index.html', context)
+
+def signup(request):
+    context = {}
+    return render(request, 'askMe/signup.html', context)
+
+def login(request):
+    context = {}
+    return render(request, 'askMe/login.html', context)
